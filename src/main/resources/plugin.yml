@@ -1,0 +1,6 @@
+name: CustomWelcomePlugin
+version: '${version}'
+main: com.github.cyberryan1.customwelcomeplugin.CustomWelcomePlugin
+api-version: '1.20'
+commands:
+  welcome:
