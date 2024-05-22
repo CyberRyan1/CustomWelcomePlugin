@@ -1,7 +1,7 @@
 package com.github.cyberryan1.customwelcomeplugin;
 
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -18,19 +18,17 @@ public class WelcomeCommand implements CommandExecutor {
         if ( args.length == 0 || Bukkit.getOfflinePlayer( args[0] ) == null ) {
             // Making sure the command sender is a player
             if ( sender instanceof Player == false ) {
-                sender.sendMessage( MiniMessage.miniMessage().deserialize( "<gray>You must specify a target!</gray>" ) );
+                sender.sendMessage( "You must specify a target" );
                 return true;
             }
 
             OfflinePlayer target = ( OfflinePlayer ) sender;
             boolean enabled = toggleWelcome( target );
             if ( enabled ) {
-                sender.sendMessage( MiniMessage.miniMessage()
-                        .deserialize( "<green>Enabled</green> welcomes for <aqua>" + target.getName() + "</aqua>" ) );
+                sender.sendMessage( ChatColor.translateAlternateColorCodes( '&',"&aEnabled&7 welcomes for &b" + target.getName() ) );
             }
             else {
-                sender.sendMessage( MiniMessage.miniMessage()
-                        .deserialize( "<red>Disabled</red> welcomes for <aqua>" + target.getName() + "</aqua>" ) );
+                sender.sendMessage( ChatColor.translateAlternateColorCodes( '&',"&cDisabled&7 welcomes for &b" + target.getName() ) );
             }
         }
 
@@ -39,12 +37,10 @@ public class WelcomeCommand implements CommandExecutor {
             OfflinePlayer target = Bukkit.getOfflinePlayer( args[0] );
             boolean enabled = toggleWelcome( target );
             if ( enabled ) {
-                sender.sendMessage( MiniMessage.miniMessage()
-                        .deserialize( "<green>Enabled</green> welcomes for <aqua>" + target.getName() + "</aqua>" ) );
+                sender.sendMessage( ChatColor.translateAlternateColorCodes( '&',"&aEnabled&7 welcomes for &b" + target.getName() ) );
             }
             else {
-                sender.sendMessage( MiniMessage.miniMessage()
-                        .deserialize( "<red>Disabled</red> welcomes for <aqua>" + target.getName() + "</aqua>" ) );
+                sender.sendMessage( ChatColor.translateAlternateColorCodes( '&',"&cDisabled&7 welcomes for &b" + target.getName() ) );
             }
         }
 
@@ -79,7 +75,5 @@ public class WelcomeCommand implements CommandExecutor {
 
             return false;
         }
-
-
     }
 }
